@@ -1515,6 +1515,10 @@ def get_hash(num):
 # - modified 20240120                                                         #
 ###############################################################################       
 def dataLogger(questionStr, x, log):
+    if os.path.isfile('PHYS121_DataLogger.txt' == False:
+        with open('PHYS121_DataLogger.txt', 'a+') as f:
+            f.write('Date' + '\t' + 'Time' + '\t' + 'Question' + '\t' + 'Response' + '\t' + 'Type' + '\t' + 'Result' + '\n')
+
     with open('PHYS121_DataLogger.txt', 'a+') as f:
         if isinstance(x, sym.Expr):
             objectType = 'symbolic'
