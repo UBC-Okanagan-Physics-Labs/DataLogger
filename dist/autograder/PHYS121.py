@@ -1549,6 +1549,7 @@ def dataLogger(questionStr, x, log):
 # Log student entries to auto-graded questions                                #
 # - modified 20240120                                                         #
 ###############################################################################       
-def graderCheck(questionStr, x, check):
+def graderCheck(x, check):
+    questionStr = str(check).split(' results')[0] # Get a string of the question name.
     dataLogger(questionStr, x, str(check))
     return check
