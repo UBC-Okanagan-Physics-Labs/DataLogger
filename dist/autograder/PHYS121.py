@@ -16,8 +16,9 @@ from matplotlib.pyplot import cm # used to generate a sequence of colours for pl
 from scipy.optimize import curve_fit
 from IPython.display import HTML as html_print
 from IPython.display import display, Markdown, Latex
-from datetime import datetime
+from datetime import datetime, timedelta
 import sympy as sym
+import otter
 
 ###############################################################################
 # Import a set of modules                                                     #
@@ -1539,6 +1540,15 @@ def dataLogger(questionStr, x, log):
         else:
             result = 'passed' 
         now = datetime.now()
-        dt_string = now.strftime("%d/%m/%Y" + '\t' + "%H:%M:%S")
+        corr = now - timedelta(hours = 8)
+        dt_string = corr.strftime("%d/%m/%Y" + '\t' + "%H:%M:%S")
         f.write(dt_string + '\t' + questionStr + '\t' + str(x) + '\t' + objectType + '\t' + result + '\n')
     return
+
+###############################################################################
+# Log student entries to auto-graded questions                                #
+# - modified 20240120                                                         #
+###############################################################################       
+def graderCheck(questionStr, x, check):
+    dataLogger(questionStr, x, str(check))
+    return check
